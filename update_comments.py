@@ -51,9 +51,23 @@ if not username or not password:
 # 从配置文件获取 v2rayAggregator 参数
 links_url = config_root["v2rayAggregator"]["links_url"]
 
-# 登陆 Lemmy
+# 尝试登录 Lemmy ，最多重试三次
 lemmy = Lemmy(lemmy_url, request_timeout=5)
-lemmy.log_in(username, password)
+max_attempts = 3
+attempts = 0
+
+while attempts < max_attempts:
+    success = lemmy.log_in(username, password)
+    if success:
+        logging.info("登录成功！")
+        break  # 退出循环
+    else:
+        attempts += 1
+        logging.info(f"登录失败，正在重试... ({attempts}/{max_attempts})")
+        time.sleep(5)  # 等待 5 秒后再重试
+
+if attempts == max_attempts:
+    logging.error("登录失败次数过多，请检查你的登录凭据或稍后再试。")
 
 # Comment 模板
 template = """
