@@ -67,7 +67,9 @@ while attempts < max_attempts:
         time.sleep(5)  # 等待 5 秒后再重试
 
 if attempts == max_attempts:
-    logging.error("Too many failed login attempts, please check your credentials or try again later.")
+    logging.error(
+        "Too many failed login attempts, please check your credentials or try again later."
+    )
 
 # Comment 模板
 template = """
