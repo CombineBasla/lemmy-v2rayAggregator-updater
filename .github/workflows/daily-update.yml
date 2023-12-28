@@ -1,0 +1,23 @@
+name: Daily Update Comments
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天在 UTC 时间的午夜（00:00）运行
+  workflow_dispatch:  # 允许手动运行
+
+jobs:
+  update-comments:
+    runs-on: ubuntu-latest  # 使用最新的 Ubuntu 虚拟环境
+    container: python:3.8  # 使用 Docker 容器中的 Python 3.8 环境
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2  # 检出仓库代码
+
+    - name: Install Dependencies
+      run: pip install -r requirements.txt  # 安装依赖
+
+    - name: Run update_comments.py
+      run: python update_comments.py  # 运行脚本
+      env:
+        LEMMY_BOT_PASSWORD: ${{ secrets.LEMMY_BOT_PASSWORD }}  # 设置环境变量
