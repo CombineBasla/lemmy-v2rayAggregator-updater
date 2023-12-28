@@ -1,0 +1,22 @@
+lemmy:
+  lemmy_url: https://lemmy.world
+  request_timeout: 5
+  community: "2012"
+  post_id: 10043727
+  comment_id_list:
+    [
+      6271578,
+      6271580,
+      6271581,
+      6271583,
+      6271584,
+      6271585,
+      6271586,
+      6271587,
+      6271588,
+      6271589,
+    ]
+  username: blankblue
+
+v2rayAggregator:
+  links_url: https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/Eternity.txt
