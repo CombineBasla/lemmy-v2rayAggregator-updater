@@ -59,15 +59,15 @@ attempts = 0
 while attempts < max_attempts:
     success = lemmy.log_in(username, password)
     if success:
-        logging.info("登录成功！")
+        logging.info("Login successful!")
         break  # 退出循环
     else:
         attempts += 1
-        logging.info(f"登录失败，正在重试... ({attempts}/{max_attempts})")
+        logging.info(f"Login failed, retrying... ({attempts}/{max_attempts})")
         time.sleep(5)  # 等待 5 秒后再重试
 
 if attempts == max_attempts:
-    logging.error("登录失败次数过多，请检查你的登录凭据或稍后再试。")
+    logging.error("Too many failed login attempts, please check your credentials or try again later.")
 
 # Comment 模板
 template = """
