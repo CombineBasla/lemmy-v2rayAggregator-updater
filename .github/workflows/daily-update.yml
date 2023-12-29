@@ -2,7 +2,7 @@ name: Daily Update Comments
 
 on:
   schedule:
-    - cron: '30 22 * * *'  # 每天在 UTC 时间的午夜（22:30）运行
+    - cron: '30 22 * * *'  # 每天在 UTC 时间的夜晚（22:30），东八区的早上（06:30）运行
   workflow_dispatch:  # 允许手动运行
 
 jobs:
